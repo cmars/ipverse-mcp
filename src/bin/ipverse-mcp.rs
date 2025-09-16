@@ -1,7 +1,7 @@
 use std::sync::Arc;
 
 use ipverse_mcp::{asn_ip::upstream, mcp::ASNSubnet};
-use rmcp::transport::{sse_server::SseServerConfig, SseServer};
+use rmcp::transport::{SseServer, sse_server::SseServerConfig};
 use tokio::sync::RwLock;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
@@ -44,7 +44,7 @@ async fn main() -> anyhow::Result<()> {
         }
     });
 
-    let upstream    = Arc::new(RwLock::new(upstream::Upstream::new()?));
+    let upstream = Arc::new(RwLock::new(upstream::Upstream::new()?));
     let ct = sse_server.with_service(move || ASNSubnet::new(upstream.clone()));
 
     tokio::signal::ctrl_c().await?;

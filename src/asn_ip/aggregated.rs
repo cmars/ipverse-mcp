@@ -1,7 +1,6 @@
 use ipnet::{Ipv4Net, Ipv6Net};
 use serde::{Deserialize, Serialize};
 
-
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ASNInfo {
     pub asn: u32,
