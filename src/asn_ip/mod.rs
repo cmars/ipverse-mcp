@@ -1,3 +1,4 @@
+use ipnet::{Ipv4Net, Ipv6Net};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -10,8 +11,8 @@ pub struct ASNInfo {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Subnets {
-    pub ipv4: Vec<String>,
-    pub ipv6: Vec<String>,
+    pub ipv4: Vec<Ipv4Net>,
+    pub ipv6: Vec<Ipv6Net>,
 }
 
 #[cfg(test)]
@@ -27,11 +28,11 @@ mod tests {
             description: "Fortum".to_string(),
             subnets: Subnets {
                 ipv4: vec![
-                    "132.171.0.0/16".to_string(),
-                    "137.96.0.0/16".to_string(),
-                    "193.110.32.0/21".to_string(),
+                    "132.171.0.0/16".parse().unwrap(),
+                    "137.96.0.0/16".parse().unwrap(),
+                    "193.110.32.0/21".parse().unwrap(),
                 ],
-                ipv6: vec!["2405:1800::/32".to_string()],
+                ipv6: vec!["2405:1800::/32".parse().unwrap()],
             },
         };
 
