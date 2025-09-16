@@ -17,3 +17,25 @@ ipnet = { version = "2.9", features = ["serde"] }
 git2 = "0.20.2"
 thiserror = "2.0.16"
 dirs = "6.0.0"
+rmcp = { version = "0.6.4", features = [
+    "server",
+    "macros",
+    "schemars",
+    "transport-sse-server",
+] }
+tokio = { version = "1.47.1", features = [
+    "fs",
+    "macros",
+    "rt-multi-thread",
+    "signal",
+] }
+schemars = "1.0"
+axum = "0.8.4"
+tracing = "0.1.41"
+anyhow = "1.0.99"
+tracing-subscriber = { version = "0.3.20", features = [
+    "env-filter",
+    "std",
+    "fmt",
+] }
+tokio-util = "0.7.16"
